@@ -5,9 +5,10 @@ import java.util.Date;
 import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+
+import com.lendingApp.main.exception.UserApiException;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -48,17 +49,17 @@ public class JwtTokenProvider {
         	Jwts.parser().verifyWith(key()).build().parse(token);
             return true;
         } catch (MalformedJwtException ex) {
-            throw new UserApiException(HttpStatus.BAD_REQUEST, "Invalid JWT token");
+            throw new UserApiException("Invalid JWT token");
         } catch (ExpiredJwtException ex) {
-            throw new UserApiException(HttpStatus.BAD_REQUEST, "Expired JWT token");
+            throw new UserApiException("Expired JWT token");
         } catch (UnsupportedJwtException ex) {
-            throw new UserApiException(HttpStatus.BAD_REQUEST, "Unsupported JWT token");
+            throw new UserApiException("Unsupported JWT token");
         } catch (IllegalArgumentException ex) {
-            throw new UserApiException(HttpStatus.BAD_REQUEST, "JWT claims string is empty.");
+            throw new UserApiException("JWT claims string is empty.");
         }
         catch(Exception e)
         {
-        	throw new UserApiException(HttpStatus.BAD_REQUEST, "Invalid Credentials");
+        	throw new UserApiException("Invalid Credentials");
         }
     }
 	
