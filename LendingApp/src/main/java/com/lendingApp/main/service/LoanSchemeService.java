@@ -9,4 +9,5 @@ public interface LoanSchemeService {
 LoanResponseDto findLoandById(Long id);
 LoanResponseDto addLoanScheme(LoanSchemeDto loanSchemeDto);
 List<LoanResponseDto> getAllLoans();
+List<LoanResponseDto> findLoanByLoanType(String loanType);
 }

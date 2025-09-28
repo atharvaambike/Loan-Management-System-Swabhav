@@ -42,5 +42,13 @@ public class LoanSchemeServiceImpl implements LoanSchemeService{
        }
        return loanResponseDtos;
     }
-
+    @Override
+    public List<LoanResponseDto> findLoanByLoanType(String loanType) {
+        List<LoanScheme> loanSchemes = loanSchemeRepository.findByLoanType(loanType);
+       List<LoanResponseDto> loanResponseDtos = new ArrayList<>();
+       for(LoanScheme loanScheme:loanSchemes){
+        loanResponseDtos.add(mapper.map(loanScheme, LoanResponseDto.class));
+       }
+       return loanResponseDtos;
+    }
 }

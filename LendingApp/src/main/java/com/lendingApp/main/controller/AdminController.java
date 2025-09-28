@@ -57,4 +57,9 @@ public class AdminController {
     public ResponseEntity<List<LoanResponseDto>> getAllLoanScheme() {
         return ResponseEntity.ok(loanSchemeService.getAllLoans());
     }
+
+    @GetMapping("/loans")
+    public ResponseEntity<List<LoanResponseDto>> getLoanSchemeByLoanType(@RequestParam String laonType) {
+        return ResponseEntity.ok(loanSchemeService.findLoanByLoanType(laonType));
+    }
 }
