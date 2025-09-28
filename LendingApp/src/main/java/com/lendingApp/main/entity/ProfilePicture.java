@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -19,6 +22,8 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class ProfilePicture {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private UUID profilePictureId;
 	
 	 private String picName;
