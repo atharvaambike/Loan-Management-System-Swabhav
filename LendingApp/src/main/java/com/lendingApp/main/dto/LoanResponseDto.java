@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoanResponseDto {
+    private Long loanSchemeId;
 	private String loanName;
     private String loanType;
     private Double minLoanAmount;
