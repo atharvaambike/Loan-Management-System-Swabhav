@@ -52,4 +52,20 @@ public class LoanSchemeServiceImpl implements LoanSchemeService{
        }
        return loanResponseDtos;
     }
+    @Override
+    public LoanResponseDto deactiveLoanScheme(Long loanId) {
+        LoanScheme loan = loanSchemeRepository.findById(loanId)
+        .orElseThrow(() -> new LoanException("No loan with id " + loanId));
+        loan.setActive(false);
+        loan = loanSchemeRepository.save(loan);
+        return mapper.map(loan, LoanResponseDto.class);
+    }
+    @Override
+    public LoanResponseDto activateLoanScheme(Long loanId) {
+       LoanScheme loan = loanSchemeRepository.findById(loanId)
+        .orElseThrow(() -> new LoanException("No loan with id " + loanId));
+        loan.setActive(true);
+        loan = loanSchemeRepository.save(loan);
+        return mapper.map(loan, LoanResponseDto.class);
+    }
 }
