@@ -1,7 +1,11 @@
 package com.lendingApp.main.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lendingApp.main.dto.LoanResponseDto;
 import com.lendingApp.main.dto.LoanSchemeDto;
@@ -9,6 +13,7 @@ import com.lendingApp.main.entity.LoanScheme;
 import com.lendingApp.main.exception.LoanException;
 import com.lendingApp.main.repository.LoanSchemeRepository;
 
+@Service
 public class LoanSchemeServiceImpl implements LoanSchemeService{
 
     @Autowired
@@ -27,6 +32,15 @@ public class LoanSchemeServiceImpl implements LoanSchemeService{
        LoanScheme loanScheme = mapper.map(loanSchemeDto, LoanScheme.class);
        loanScheme = loanSchemeRepository.save(loanScheme);
        return mapper.map(loanScheme,LoanResponseDto.class);
+    }
+    @Override
+    public List<LoanResponseDto> getAllLoans() {
+       List<LoanScheme> loanSchemes = loanSchemeRepository.findAll();
+       List<LoanResponseDto> loanResponseDtos = new ArrayList<>();
+       for(LoanScheme loanScheme:loanSchemes){
+        loanResponseDtos.add(mapper.map(loanScheme, LoanResponseDto.class));
+       }
+       return loanResponseDtos;
     }
 
 }
