@@ -30,6 +30,7 @@ public class LoanSchemeServiceImpl implements LoanSchemeService{
     public LoanResponseDto addLoanScheme(LoanSchemeDto loanSchemeDto) {
         
        LoanScheme loanScheme = mapper.map(loanSchemeDto, LoanScheme.class);
+       loanScheme.setActive(true);
        loanScheme = loanSchemeRepository.save(loanScheme);
        return mapper.map(loanScheme,LoanResponseDto.class);
     }
@@ -38,7 +39,7 @@ public class LoanSchemeServiceImpl implements LoanSchemeService{
        List<LoanScheme> loanSchemes = loanSchemeRepository.findAll();
        List<LoanResponseDto> loanResponseDtos = new ArrayList<>();
        for(LoanScheme loanScheme:loanSchemes){
-        loanResponseDtos.add(mapper.map(loanScheme, LoanResponseDto.class));
+        if(loanScheme.isActive()) loanResponseDtos.add(mapper.map(loanScheme, LoanResponseDto.class));
        }
        return loanResponseDtos;
     }
