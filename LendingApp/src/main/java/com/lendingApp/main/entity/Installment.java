@@ -12,6 +12,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
+@Table(name = "installment")
 public class Installment {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -24,4 +25,5 @@ public class Installment {
     private Boolean isPaid;
     private LocalDate paidDate;
     private Double fineAmt;
+
 }
