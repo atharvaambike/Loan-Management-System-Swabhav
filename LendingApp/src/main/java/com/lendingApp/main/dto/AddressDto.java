@@ -11,7 +11,7 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class AddressDto {
 
-        private String street;
+    private String street;
     private String area;
     private String city;
     private String pincode;

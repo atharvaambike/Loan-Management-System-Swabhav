@@ -26,7 +26,7 @@ public class CustomUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // TODO Auto-generated method stub
         User user = userRepo.findByEmail(username).
-                orElseThrow(() -> new UserApiException("User not found"));
+            orElseThrow(() -> new UserApiException("User not found"));
 
         Role role = user.getRole();
 
