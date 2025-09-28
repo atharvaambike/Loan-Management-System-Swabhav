@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "profile_picture")
+@Table(name="profile_pictures")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,12 +23,12 @@ import lombok.Setter;
 public class ProfilePicture {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private UUID profilePictureId;
 	
-	 private String picName;
-	 private String picURL;
-	 private LocalDateTime picUploadedAt;
+	private String picName;
+	private String picURL;
+	private LocalDateTime picUploadedAt;
 	
 	@OneToOne(mappedBy = "profilePicture")
 	private User user;
