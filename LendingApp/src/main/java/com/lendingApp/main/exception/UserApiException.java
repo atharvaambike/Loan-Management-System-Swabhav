@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 
 public class UserApiException extends RuntimeException {
 
-    public UserApiException(HttpStatus badRequest, String string) {
+    public UserApiException(String string) {
         
     }
 
