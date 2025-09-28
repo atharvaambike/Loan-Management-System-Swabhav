@@ -18,8 +18,6 @@ import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
-import com.lendingApp.main.exception.UserApiException;
-
 @Component
 public class JwtTokenProvider {
 
