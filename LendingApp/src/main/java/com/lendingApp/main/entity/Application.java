@@ -34,7 +34,7 @@ public class Application {
     private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "loan_requirement_id", nullable = false)
+    @JoinColumn(name = "loan_scheme_id", nullable = false)
     private LoanScheme loanRequirement;
 
     @ManyToOne

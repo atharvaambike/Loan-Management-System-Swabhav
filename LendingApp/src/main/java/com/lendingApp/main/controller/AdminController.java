@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 
@@ -61,5 +63,15 @@ public class AdminController {
     @GetMapping("/loans")
     public ResponseEntity<List<LoanResponseDto>> getLoanSchemeByLoanType(@RequestParam String laonType) {
         return ResponseEntity.ok(loanSchemeService.findLoanByLoanType(laonType));
+    }
+
+    @PutMapping("loans/{loanId}/deactive")
+    public ResponseEntity<LoanResponseDto> deActivateLoan(@PathVariable Long loanId) {
+        return ResponseEntity.ok(loanSchemeService.deactiveLoanScheme(loanId));
+    }
+
+    @PutMapping("loans/{loanId}/active")
+    public ResponseEntity<LoanResponseDto> activateLoan(@PathVariable Long loanId) {
+        return ResponseEntity.ok(loanSchemeService.activateLoanScheme(loanId));
     }
 }

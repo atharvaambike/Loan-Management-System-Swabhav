@@ -10,4 +10,6 @@ LoanResponseDto findLoandById(Long id);
 LoanResponseDto addLoanScheme(LoanSchemeDto loanSchemeDto);
 List<LoanResponseDto> getAllLoans();
 List<LoanResponseDto> findLoanByLoanType(String loanType);
+LoanResponseDto deactiveLoanScheme(Long loadId);
+LoanResponseDto activateLoanScheme(Long loanId);
 }
