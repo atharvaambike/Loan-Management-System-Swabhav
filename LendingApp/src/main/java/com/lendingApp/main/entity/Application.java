@@ -1,6 +1,7 @@
 package com.lendingApp.main.entity;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +14,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -22,8 +22,8 @@ import lombok.NoArgsConstructor;
 public class Application {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long applicationId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID applicationId;
 
     private String status; // pending / approved / rejected
     private Double requestedAmount;
@@ -41,10 +41,11 @@ public class Application {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-//    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Documents> documents;
-//
-//    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Installment> installments;
+    // @OneToMany(mappedBy = "application", cascade = CascadeType.ALL, orphanRemoval
+    // = true)
+    // private List<Documents> documents;
+    //
+    // @OneToMany(mappedBy = "application", cascade = CascadeType.ALL, orphanRemoval
+    // = true)
+    // private List<Installment> installments;
 }
-
