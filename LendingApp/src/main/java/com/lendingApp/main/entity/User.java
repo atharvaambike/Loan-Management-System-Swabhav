@@ -17,7 +17,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
 @Entity
 @Table(name = "users")
 @Getter
@@ -25,32 +24,32 @@ import lombok.Setter;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class User {
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
- private UUID userId;
- private String firstName;
- private String middleName;
- private String lastName;
- private String mobile;
- private String email;
- private String password;
- private Boolean isActive;
- private String gender;
- private LocalDate createdAt;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) // better for UUID
+    private UUID userId;
 
-@ManyToOne
-@JoinColumn(name = "role_id")
-private Role role;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String mobile;
+    private String email;
+    private String password;
+    private Boolean isActive;
+    private String gender;
+    private LocalDate createdAt;
 
- @OneToOne
- @JoinColumn(name = "profile_picture")
- private ProfilePicture profilePhoto;
- 
- @OneToOne
- @JoinColumn(name = "address_id")
- private Address address;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
- @OneToMany(mappedBy = "user")
- private List<Document> documents;
+    @OneToOne
+    @JoinColumn(name = "profile_picture")
+    private ProfilePicture profilePhoto;
+
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+    @OneToMany(mappedBy = "user")
+    private List<Document> documents;
 }
-

@@ -21,13 +21,14 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO) // better for UUID
     private UUID addressId;
+
     private String street;
     private String area;
     private String city;
     private String pincode;
-    
-    @OneToOne(mappedBy = "user")
-    User user;
+
+    @OneToOne(mappedBy = "address") // <-- FIXED
+    private User user;
 }
